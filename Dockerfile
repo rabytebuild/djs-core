@@ -12,13 +12,13 @@ RUN apt-get update && \
 
 # Create a user for FTP access
 RUN useradd -m ftpuser && \
-    echo "ftpuser:palazzodjs" | chpasswd
+    echo "ftpuser:password" | chpasswd
 
 # Create a directory to store FTP files
 RUN mkdir /home/ftpuser/ftp
 
 # Set permissions for the FTP directory
-RUN chown ftpuser:palazzodjs /home/ftpuser/ftp
+RUN chown ftpuser:ftpuser /home/ftpuser/ftp
 
 # Configure vsftpd
 RUN echo "write_enable=YES" >> /etc/vsftpd.conf
